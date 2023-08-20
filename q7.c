@@ -1,38 +1,42 @@
-// Write a program to reverse a string.
+// Remove duplicate elements
 
 #include <stdio.h>
-#include <string.h>
 
-// Function to reverse the string
-void reverseString(char str[]) {
-    int length = strlen(str);
-    int start = 0;
-    int end = length - 1;
-
-    // Swap characters from the beginning and end of the string until they meet in the middle
-    while (start < end) {
-        char temp = str[start];
-        str[start] = str[end];
-        str[end] = temp;
-
-        start++;
-        end--;
-    }
-}
+#define MAX_SIZE 10
 
 int main() {
-    char str[100];
+    int arr[MAX_SIZE];
+    int i, j, k, size;
 
-    printf("Enter a string: ");
-    fgets(str, sizeof(str), stdin);
+    printf("Enter the size of the array (up to %d): ", MAX_SIZE);
+    scanf("%d", &size);
 
-    // Remove the newline character at the end of the string (if present)
-    if (str[strlen(str) - 1] == '\n')
-        str[strlen(str) - 1] = '\0';
+    printf("Enter the elements of the array:\n");
+    for (i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
 
-    reverseString(str);
+    // Remove duplicate elements
+    for (i = 0; i < size; i++) {
+        for (j = i + 1; j < size;) {
+            if (arr[j] == arr[i]) {
+                // Shift elements to the left to overwrite duplicate element
+                for (k = j; k < size - 1; k++) {
+                    arr[k] = arr[k + 1];
+                }
+                // Decrement the size of the array
+                size--;
+            } else {
+                j++;
+            }
+        }
+    }
 
-    printf("Reversed string: %s\n", str);
+    printf("Array after removing duplicates:\n");
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
 
     return 0;
 }

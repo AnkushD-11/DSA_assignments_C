@@ -1,27 +1,37 @@
-// Write a program to check whether a string is palindrome or not.
+// Second highest element
 
-#include<stdio.h>
-#include<string.h>
-int main(){
-    char string[20];
-    int len, i;
-    printf("Enter a string: ");
-    scanf("%s", string);
+#include <stdio.h>
 
-    len = strlen(string);
-    if(len>20)
-        return 0;
-    
-    char string_rev[20];
-    for(i= len-1; i>= 0; i--)
-    {
-        string_rev[len - 1 - i] = string[i];
+#define MAX_SIZE 10
+
+int main() {
+    int arr[MAX_SIZE];
+    int i, size;
+    int max, secondMax;
+
+    printf("Enter the size of the array (up to %d): ", MAX_SIZE);
+    scanf("%d", &size);
+
+    printf("Enter the elements of the array:\n");
+    for (i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
     }
-    if (strcmp(string,string_rev)==0)
-    {
-        printf("The strings are palindrome");
+
+    // Initialize max and secondMax
+    max = arr[0];
+    secondMax = arr[0];
+
+    // Find the maximum element
+    for (i = 1; i < size; i++) {
+        if (arr[i] > max) {
+            secondMax = max;
+            max = arr[i];
+        } else if (arr[i] > secondMax && arr[i] < max) {
+            secondMax = arr[i];
+        }
     }
-    else
-        printf("Not palindrome");
-    
+
+    printf("The second highest element is: %d\n", secondMax);
+
+    return 0;
 }

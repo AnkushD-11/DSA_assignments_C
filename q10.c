@@ -1,32 +1,44 @@
-// Write a program to implement searching and sorting in a given list of words.
-
-#include <stdio.h>
-#include <string.h>
-
-// Function to perform linear search in the word list
-int linear_search(char *word_list[], int size, char *target) {
-    for (int i = 0; i < size; i++) {
-        if (strcmp(word_list[i], target) == 0) {
-            return i;
-        }
-    }
-    return -1;
-}
-
-int main() {
-    char *words[] = {"apple", "orange", "banana", "grape", "kiwi", "pear"};
-    int size = sizeof(words) / sizeof(words[0]);
-
-    printf("Original List: ");
-    for (int i = 0; i < size; i++) {
-        printf("%s ", words[i]);
-    }
-    char *target_word = "kiwi";         //change targeted word
-    int index = linear_search(words, size, target_word);
-    printf("\n\nLinear Search:\n");
-    if (index != -1) {
-        printf("'%s' found at index %d.\n", target_word, index);
-    } else {
-        printf("'%s' not found in the list.\n", target_word);
-    }
+#include<stdio.h>
+int main()
+{
+	int i=0,j=0,M=0,N=0,k=0,temp=0;
+	printf("Enter size of array 1 : ");
+	scanf("%d",&M);
+	printf("Enter size of array 2 : ");
+	scanf("%d",&N);
+	int A[M];
+	int B[N];
+	for(i=0;i<M;i++)
+	{
+		printf("Enter A[%d] : ",i);
+		scanf("%d",&A[i]);
+	}
+	for(i=0;i<N;i++)
+	{
+		printf("Enter B[%d] : ",i);
+		scanf("%d",&B[i]);
+	}
+	int C[M+N];
+	for(i=0;i<M+N;i++)
+	{
+		if(i<M)
+		C[i]=A[i];
+		else
+		C[i]=B[k++];
+	}//merging done
+for(i=0;i<M+N;i++)
+	{
+		for(j=0;j<M+N-i-1;j++)
+		{
+			if(C[j]>C[j+1])
+			{
+				temp=C[j];
+				C[j]=C[j+1];
+				C[j+1]=temp;
+			}
+		}
+	}//sorted
+	printf("sorted merged array : \n");
+	for(i=0;i<M+N;i++)
+	printf("%d\t",C[i]);
 }
