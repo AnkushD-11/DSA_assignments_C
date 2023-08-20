@@ -1,20 +1,45 @@
-// 1 + 1 + 4+ 9 + 25
+// Sparse matrix
 
-#include <stdio.h>
-int main()
-{
-	int n=0;
-	printf("Enter N : ");
-	scanf("%d",&n);
-	int i=0,j=0,sum=2,sq=0;
-	int a=1,b=1,c=0;
-	for(int i=3;i<=n;i++)
-	{
-		c=a+b;
-		sq=c*c;
-		sum+=sq;
-		a=b;
-		b=c;
-	}
-	printf("The sum of series : %d",sum);
+#include<stdio.h>
+int main(){
+    int row, col, count=0;
+    int i, j, arr[5][5];
+
+    printf("Enter the number of rows: ");
+    scanf("%d", &row);
+
+    printf("Enter number of column: ");
+    scanf("%d", &col);
+
+    printf("Enter the Matrix: ");
+    for(i=0; i<row; i++){
+        for(j=0; j<col; j++){
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    printf("Output the matrix:\n");
+    for(i=0; i<row ; i++){
+        for(j = 0; j< col; j++ ){
+            printf("%d", arr[i][j]);
+        }
+    }
+
+    for(i=0; i<row ; i++){
+        for(j = 0; j< col; j++ )
+        {
+            if(arr[i][j]==0)
+                count++;
+        }
+    }
+
+    if(count > (row * col)/2)
+    {
+        printf("\nIt is a sparse matrix");
+    }
+    else{
+        printf("Not sparse matrix");
+    }
+
+
 }
