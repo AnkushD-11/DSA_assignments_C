@@ -1,29 +1,18 @@
-// Write a program to find frequency of a given number 'k'.
+//Write a program to print abbreviation of a given word.
 
 #include<stdio.h>
-int main(){
-    int i, count = 0, num, size;
-    int arr[10];
-
-    printf("Enter size of the array: ");
-    scanf("%d", &size);
-    for(i=0; i<size; i++){
-        printf("arr[%d]= ", i);
-        scanf("%d", &arr[i]);
-    }
-    for ( i = 0; i < size; i++)
+#include<string.h>
+int main()
+{
+char str[100],*ptr,i,l;
+printf("Enter any string:\n");
+gets(str);
+l=strlen(str);
+ptr= str;
+printf("%c",*(ptr+0));
+for(i=1;i<l;i++)
     {
-        printf("%d\n", arr[i]);
+    if(*(ptr+i-1)==' ')
+    printf(" %c. ",*(ptr+i));
     }
-
-    printf("\nFrequency digit: ");
-    scanf("%d", &num);
-    for ( i = 0; i < size; i++)
-    {
-        if(arr[i]==num)
-            count++;
-    }
-
-    printf("The frequency of %d in the array is %d", num, count);
-
 }
